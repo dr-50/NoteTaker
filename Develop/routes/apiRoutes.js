@@ -31,15 +31,28 @@ router.post('/notesa', (req,res) => {
 
         parsedNotes=JSON.parse(note);
         res.json(parsedNotes)
-    }).then(data => {
-        console.log(data);
+
         newNotes = req.body;
         console.log(newNotes);
-        // return writeFileAsync('./db/db.json', newNotes);
-        // return writeFileAsync('./db/db.json', data).then(notes => {
 
-        // })
+        parsedNotes.push(newNotes);
+        
+        //console.log(parsedNotes.stringify())
+
+        console.log(JSON.parse(parsedNotes.toString()))
+
+        //writeFileAsync('./db/db.json', parsedNotes.toString())
+
     })
+    // .then(data => {
+    //     console.log(data);
+    //     newNotes = req.body;
+    //     console.log(newNotes);
+    //     // return writeFileAsync('./db/db.json', newNotes);
+    //     // return writeFileAsync('./db/db.json', data).then(notes => {
+
+    //     // })
+    // })
 
     //console.log(notesArr);
 
