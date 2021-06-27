@@ -3,6 +3,8 @@
 ## Purpose
 The application is designed to allow users to track their notes.
 
+![screenshot](./public/assets/images/homepage.PNG)
+
 Built with
 * html
 * css
