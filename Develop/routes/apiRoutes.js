@@ -24,8 +24,7 @@ router.get('/notes', (req, res) => {
 
 router.post('/notes', (req,res) => {
     // pull existing data from db.json file
-    const notesArr =  readFileAsync('./db/db.json', "utf8").then(note => {
-        console.log(note)
+        readFileAsync('./db/db.json', "utf8").then(note => {     
         let parsedNotes;
 
         parsedNotes=JSON.parse(note);
@@ -33,13 +32,21 @@ router.post('/notes', (req,res) => {
 
         // set user entry values to variable
         newNotes = req.body;
+        // newNotes="id:"+arrLength+newNotes
+        // console.log(newNotes)
+        
         // add new values to existing notes array
         parsedNotes.push(newNotes);
+        // add id to each note
+        parsedNotes.forEach((item, i) => {
+            item.id = i+1;
+        });
+        console.log(parsedNotes)
 
         parsedNotes=JSON.stringify(parsedNotes);
         // add items to db.json file
         writeFileAsync('./db/db.json', parsedNotes)
-
+        
     })
 })
 
